@@ -1,0 +1,80 @@
+@heightHeader: 100px;
+@space: 15px;
+@fontFamily: 'Open Sans', sans-serif;
+
+*{
+	font-family: @fontFamily;
+}
+
+.align-middle{
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.navbar{
+	background: @blueBase;
+	border: 0 none;
+	.box-shadow(0; 0; 5px);
+	height: @heightHeader;
+	.border(0);
+	line-height: @heightHeader;
+
+	.navbar-brand{
+		.align-middle;
+		padding-left: @space;
+		padding-right: @space;
+		padding-top: 0;
+	}
+
+	.navbar-nav{
+		li {
+			list-style-type: none;
+			margin-right: @space;
+
+			&.active {
+				a {
+					background: white;
+					color: @blueBase;
+
+					&:hover,&:focus{
+						text-decoration: none;
+						color: @blueBase;
+						background: white;
+					}
+				}
+			}
+
+			a {
+				color: white;
+				padding: 5px 10px;
+
+				&:hover,&:focus{
+					text-decoration: none;
+					color: @blueBase;
+					background: white;
+				}
+			}
+		}
+	}
+
+	.form-login{
+		margin-top: 0;
+	}
+}
+
+.btn-default{
+	color: white;
+	background-color: #0F76C3;
+	border-color: #0F76C3;
+	border-radius: 0;
+	padding: 5px 10px;
+}
+
+.cpf-login{
+	margin-right: 5px;
+}
+
+.btn-entrar{
+	margin-top: 3px;
+}

@@ -28,6 +28,12 @@ module.exports = function(grunt) {
         cwd: './assets',
         src: ['**/*.!(coffee|less)'],
         dest: '.tmp/public'
+      },
+      {
+        expand: true,
+        cwd: './nodule_modules/bootstrap/dist/css',
+        src: ['**/*'],
+        dest: '.assets/styles'
       }]
     },
     build: {
