@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="transferenciaController">
 	<div class="row">
-		<div class="col-xs-12" ng-controller="transferenciaController">
+		<div class="col-xs-12">
 		    <bread-crumb></bread-crumb>
 		</div>
 	</div>
@@ -11,7 +11,47 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			
+			<form class="form-horizontal">		        
+		        <div class="form-group">
+		            <label for="data-transferencia" class="col-sm-3 control-label">Data da Transferência</label>
+		            <div class="col-sm-2">
+		            	<div class="input-group">
+		            		<input type="text" class="form-control date-picker" id="data_transferencia" name="data_transferencia" ng-model="dados.data_transferencia" required="" date-picker data-campomodel="data_transferencia" data-enviaForm="true"/>	
+		            		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		            	</div>		            	
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label for="agencia" class="col-sm-3 control-label">Agência</label>
+		            <div class="col-sm-2">
+		            	<input class="form-control" id="agencia" placeholder="Agência" type="text"></input>	
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label for="conta-corrente"  class="col-sm-3 control-label">Conta Corrente</label>
+		            <div class="col-sm-3">
+		            	<input class="form-control" id="conta-corrente" placeholder="Conta Corrente" type="text"></input>
+	            	</div>
+		        </div>
+		        <div class="form-group">
+		            <label for="cpf" class="col-sm-3 control-label">CPF</label>
+		            <div class="col-sm-2">
+		            	<input class="form-control" id="cpf" type="text" ui-mask="999.999.999-99" ng-model="dados.cpf" ng-blur="checkCpf($event)"></input>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label for="valor" class="col-sm-3 control-label">Valor</label>
+		            <div class="col-sm-2">
+		            	<input class="form-control" id="valor" placeholder="Valor" type="text" ng-model="dados.valor" mask-money></input>
+		            </div>
+		        </div>
+		        
+		        <div class="form-group">
+		        	<div class="col-sm-offset-3 col-sm-9">
+		        		<button class="btn btn-default" type="submit">Transferir</button>		
+		        	</div>
+		        </div>
+		    </form>
 		</div>
 	</div>
 </div>
