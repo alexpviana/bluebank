@@ -2,4 +2,12 @@ app.controller("loginController",['$scope','$location','$http','$parse',function
 
     $scope.dados = {
     };
+
+    $scope.breadCrumb = [{
+    	"nome" : "Home",
+    	"link" : "/#!/home"
+    },{
+    	"nome" : "Login",
+    	"link" : "/#!/login"
+    }];
 }]);

@@ -1,1 +1,42 @@
-<h1>Login</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12" ng-controller="loginController">
+		    <bread-crumb></bread-crumb>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="title-page">Login</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form-horizontal">
+		        <div class="form-group">
+		            <label for="agencia" class="col-sm-3 control-label">Agência</label>
+		            <div class="col-sm-2">
+		            	<input class="form-control" id="agencia" placeholder="Agência" type="text"></input>	
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label for="conta-corrente"  class="col-sm-3 control-label">Conta Corrente</label>
+		            <div class="col-sm-3">
+		            	<input class="form-control" id="conta-corrente" placeholder="Conta Corrente" type="text"></input>
+	            	</div>
+		        </div>
+		        <div class="form-group">
+		            <label for="senha" class="col-sm-3 control-label">Senha</label>
+		            <div class="col-sm-2">
+		            	<input class="form-control" id="senha" placeholder="Senha" type="password"></input>
+		            </div>
+		        </div>
+		        
+		        <div class="form-group">
+		        	<div class="col-sm-offset-3 col-sm-9">
+		        		<button class="btn btn-default" type="submit">Entrar</button>		
+		        	</div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</div>

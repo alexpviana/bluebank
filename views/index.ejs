@@ -12,7 +12,7 @@
                 <span class="icon-bar">
                 </span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/#!/home">
                 <img src="images/logo-blue-bank.png" alt="Banco Blue Bank" title="Banco Blue Bank">
             </a>
         </div>
@@ -20,28 +20,28 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="nav navbar-nav">
                 <ul class="align-middle navbar-nav">
-                    <li class="active">
-                        <a href="#">
+                    <li ng-class="{'active' : paginaAtual == '/extrato'}">
+                        <a href="/#!/extrato">
                             EXTRATO
-                            <span class="sr-only">
+                            <span class="sr-only" ng-if="paginaAtual == '/extrato'">
                                 (current)
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li ng-class="{'active' : paginaAtual == '/transferencia'}">
+                        <a href="/#!/transferencia">
                             TRANSFERÊNCIA
                         </a>
+                        <span class="sr-only" ng-if="paginaAtual == '/transferencia'">
+                            (current)
+                        </span>
                     </li>
                 </ul>    
             </div>
             
-            <form class="navbar-form navbar-right form-login">
-                <div class="form-group">
-                    <input class="form-control cpf-login" placeholder="Digite seu CPF para entrar" type="text"></input>
-                </div>
-                <button class="btn btn-default btn-entrar" type="submit">
-                    Entrar
+            <form class="navbar-form navbar-right form-login">                
+                <button class="btn btn-default btn-entrar" type="button" ng-click="entraPagina('login')">
+                    Acesse sua conta
                 </button>
             </form>
         </div>
@@ -49,14 +49,12 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+<div class="ui-view"></div>
 <div class="container-fluid">
     <div class="row">
-        <div class="ui-view"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 rodape">
+        <div class="col-xs-12 rodape text-center">
             <img src="images/logo-rodape-blue-bank.png" alt="Blue Bank" title="Blue Bank">
-            <p><%= sails.moment().format("YYYY") %></p>
+            <p><%= sails.moment().format("YYYY") %> - Todos os direitos reservados</p>
         </div>
     </div>
 </div>

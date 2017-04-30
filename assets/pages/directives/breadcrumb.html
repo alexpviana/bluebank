@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+	<li ng-class="{'active' : $index == breadCrumb.lenght - 1}" ng-repeat="item in breadCrumb">
+		<img src="images/icon-home.png" alt="Home" title="Home" ng-if="$index == 0">
+		<a href="{{item.link}}" ng-if="$index < breadCrumb.length - 1">{{item.nome}}</a>
+		<span ng-if="$index == breadCrumb.length - 1">{{item.nome}}</span>
+	</li>
+</ol>

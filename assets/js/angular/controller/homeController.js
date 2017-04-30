@@ -2,4 +2,6 @@ app.controller("homeController",['$scope','$location','$http','$parse',function(
 
     $scope.dados = {
     };
+
+    
 }]);

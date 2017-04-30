@@ -1,5 +1,6 @@
 @heightHeader: 100px;
 @space: 15px;
+@spaceBorder: 5px;
 @fontFamily: 'Open Sans', sans-serif;
 
 *{
@@ -13,7 +14,7 @@
 }
 
 .navbar{
-	background: @blueBase;
+	background: @baseBlue;
 	border: 0 none;
 	.box-shadow(0; 0; 5px);
 	height: @heightHeader;
@@ -35,11 +36,11 @@
 			&.active {
 				a {
 					background: white;
-					color: @blueBase;
+					color: @baseBlue;
 
 					&:hover,&:focus{
 						text-decoration: none;
-						color: @blueBase;
+						color: @baseBlue;
 						background: white;
 					}
 				}
@@ -51,7 +52,7 @@
 
 				&:hover,&:focus{
 					text-decoration: none;
-					color: @blueBase;
+					color: @baseBlue;
 					background: white;
 				}
 			}
@@ -77,4 +78,50 @@
 
 .btn-entrar{
 	margin-top: 3px;
+}
+
+.breadcrumb{
+	border-bottom: 1px solid @thinBorder;
+	padding-bottom: @spaceBorder;
+	background: none;
+
+	img{
+		margin-right: 5px;
+	}
+}
+
+.title-page{
+	text-transform: uppercase;
+	border-bottom: 5px solid @baseBlue;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666666;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	padding-bottom: 10px;
+}
+
+.rodape{
+	background: @lightBlue;
+	padding-top: @space;
+	padding-bottom: @space;
+	position: fixed;
+	bottom: 0;
+	border-top: 3px solid @baseBlue;
+
+	p{
+		margin-bottom: 0;
+		color: #666666;
+	}
+}
+
+
+.ui-view{
+	padding-bottom: 90px;
+}
+
+/** Home */
+.img-home{
+	display: block;
+	margin: 150px auto;
 }

@@ -2,4 +2,12 @@ app.controller("extratoController",['$scope','$location','$http','$parse',functi
 
     $scope.dados = {
     };
+
+    $scope.breadCrumb = [{
+    	"nome" : "Home",
+    	"link" : "/#!/home"
+    },{
+    	"nome" : "Extrato",
+    	"link" : "/#!/extrato"
+    }];
 }]);
