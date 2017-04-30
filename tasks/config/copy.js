@@ -34,6 +34,12 @@ module.exports = function(grunt) {
         cwd: './nodule_modules/bootstrap/dist/css',
         src: ['**/*'],
         dest: '.assets/styles'
+      },
+      {
+        expand: true,
+        cwd: './nodule_modules/moment/min/',
+        src: ['**/*'],
+        dest: '.tmp/public/js/vendor'
       }]
     },
     build: {
