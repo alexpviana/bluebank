@@ -20,10 +20,6 @@ module.exports = {
   		contas : {
   			collection : "contacorrente",
   			via : "agencia"
-  		},
-  		clientes : {
-  			collection : "cliente",
-  			via : "agencia"
   		}
   	}
 };

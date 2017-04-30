@@ -10,10 +10,10 @@ app.directive('formEnvio',function($http){
             scope.dadosOrigem = angular.copy(scope.dados);
 
             // Dados da session
-            $.getJSON("api/getUserSession").success(function(data){                
-                scope.hash = data.hash;
-                scope.$apply();
-            });
+            // $.getJSON("api/getUserSession").success(function(data){                
+            //     scope.hash = data.hash;
+            //     scope.$apply();
+            // });
             
             scope.resetVar = function(){
                 scope.dados = angular.copy(scope.dadosOrigem);
@@ -63,7 +63,7 @@ app.directive('formEnvio',function($http){
                     data : $.param($('#form_envio').serializeArray()), // pass in data as strings
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
-                .success(function(data) {
+                .then(function successCallback(data){
                     fechaCarregando();
                     
                     scope.submitted = false;
@@ -85,6 +85,8 @@ app.directive('formEnvio',function($http){
                             inputSelect();
                         }
                     }
+                },function errorCallback(data){
+                    console.log("error",data);
                 });
             };
         }

@@ -36,4 +36,19 @@ app.controller("mainController",['$scope','$http','$location','$rootScope',funct
         $location.path("/" + pagina);
     };
 
+    $scope.$on('sailsSocket:connect', function(ev, data) {
+        console.log("connect",ev);
+        // sailsSocket.get(
+        // '/get_user', {},
+        // function(response) {
+        //     $scope.team_id = response.user;
+        //     sailsSocket.get(
+        //     '/status_update?sort=createdAt%20ASC&team_id='+$scope.team_id, {},
+        //     function(response) {
+        //         $scope.updates = response;
+        //         $log.debug('sailsSocket::/status_update', response);
+        //     });
+        // });
+    });
+
 }]);

@@ -26,7 +26,20 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  ' * ': true,
+  'auth': {
+    '*': ['passport']
+  },
+  'UserController' : {
+    '*': ['passport','bearerAuth']
+  },
+  // 'ClienteController' : {
+  //   '*' : 'isAuthenticated'
+  // }
+  'ClienteController' : {
+    '*' : true
+  }
+
 
   /***************************************************************************
   *                                                                          *

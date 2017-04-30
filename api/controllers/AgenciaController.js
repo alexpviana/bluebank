@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	_config : {
+		index : false
+	}
 };
 

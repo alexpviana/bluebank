@@ -12,15 +12,8 @@ module.exports = {
   			type : 'string',
   			required : "true"
   		},
-  		
-
   		agencia : {
   			model : "agencia",
-  			unique : true,
-  			required : "true"
-  		},
-  		cliente	: {
-  			model : "cliente",
   			unique : true,
   			required : "true"
   		}

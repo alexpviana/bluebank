@@ -26,7 +26,13 @@
     "bootstrap" : "3.3.7",
     "angular" : "1.6.4",
     "moment" : "2.18.1",
-    "sails-mongo" : "0.12.2"
+    "sails-mongo" : "0.12.2",
+    "sails-generate-auth" : "0.3.1",
+    "passport" : "0.3.2",
+    "bcryptjs" : "2.4.3",
+    "validator" : "7.0.0",
+    "passport-local" : "1.0.0",
+    "passport-http-bearer" : "1.0.1"
   },
   "scripts": {
     "debug": "node debug app.js",
