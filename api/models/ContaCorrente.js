@@ -10,16 +10,15 @@ module.exports = {
   	attributes: {
   		numero : {
   			type : 'string',
-  			required : "true"
+  			required : "true",
+        unique : true
   		},
   		agencia : {
         model : "agencia",
-        unique : true,
         required : "true"
       },
       cliente : {
   			model : "cliente",
-  			unique : true,
         required : "true"
   		}
   	}

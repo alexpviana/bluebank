@@ -19,8 +19,10 @@ module.exports = {
       	})
       	.exec(function(err,data){
       		if(err){
-      			return res.serverError(err);
+      			return res.negotiate(err);
       		}
+
+      		console.log("conta",data);
 
       		if(data){
       			Cliente.findOne({id : data.cliente}).exec(function(err,cliente){

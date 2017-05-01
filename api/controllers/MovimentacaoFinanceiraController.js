@@ -7,23 +7,70 @@
 
 module.exports = {
 	getDadosTable : function(req,res){
-		return res.json({ req : req.allParams()});
+        var tabela = req.param('tabela');
+        var start = parseInt(req.param('start'),10);
+        var length = parseInt(req.param('length'),10);
+        var search = req.param('search[value]');
+        var order = req.param('order');
+        var columns = req.param('columns');
+
+        var admin = req.param('admin');
+        var url = req.param('url');
+
+        var ordem = "";
+
+        for(var i=0; i<order.length; i++){
+            ordem += (i > 0) ? ", " + columns[order[i].column].data + " " + order[i].dir : " "  + columns[order[i].column].data + " " + order[i].dir;
+        } // ex: id DESC
+
+        var vetData = [];
+        MovimentacaoFinanceira.find({
+        	or : [
+        		{"conta_origem" : req.session.ccId },
+        		{"conta_destino" : req.session.ccId },
+        	]
+    	})
+        .populate("conta_origem")
+        .populate("conta_destino")
+        	.sort("data_movimentacao ASC")
+        	.exec(function(err,movs){
+        		if(err){
+	      			return res.serverError(err);
+	      		}
+
+	      		var saldo =0;
+
+	      		for(var i=0; i<movs.length; i++){
+	      			var objMov = movs[i];
+	      			saldo += objMov.valor;
+
+	      			vetData.push({
+	      				"id" : objMov.id,
+	      				"data_movimentacao" : sails.moment(objMov.createdAt).format("DD/MM/YYYY"),
+	      				"origem" : (objMov.tipo == "Depósito") ? "Depósito" : "Ag / CC Fulano",
+	      				"historico" : (objMov.tipo == "Depósito") ? "Depósio em Conta" : "Transferência Fulano",
+	      				"documento" : objMov.id,
+	      				"valor" : "$ " + objMov.valor.toFixed(2).replace(".",","),
+	      				"saldo" : "$ " + saldo.toFixed(2).replace(".",",")
+	  				});
+	      		}
+
+	      		var dados = {
+	      			"draw" : req.param("draw"),
+	      			"recordsTotal" : movs.length,
+	      			"recordsFiltered" : movs.length,
+	      			"data" : vetData 
+	      		};
+
+	      		console.log(dados);
+
+	      		return res.json(dados);
+        	});
 	},
 };
 
 // public function getDadosTable(){
-//         var tabela = req.param('tabela');
-        
-//         var start = intval(req.param('start'));
-//         var length = intval(req.param('length'));
-//         var search = req.param('search[value]');
-//         var order = req.param('order');
-//         var columns = req.param('columns');
 
-//         var admin = req.param('admin');
-//         var url = req.param('url');
-
-//         var ordem = "";
 
 //         for(var $i=0; $i<count($order); $i++){
 //             $ordem .= ($i > 0) ? ", " .$columns[$order[$i]["column"]]["data"] ." " .$order[$i]["dir"] : " " .$columns[$order[$i]["column"]]["data"] ." " .$order[$i]["dir"];
@@ -49,29 +96,6 @@ module.exports = {
 //             $where = "";
 //         }
 
-
-//         if(strpos($url,"index.php") !== false){
-//             $url = str_replace("index.php/", "", $url);
-//         }
-
-//         // if($admin != ''){
-//         //     if($admin){
-//         //         // verifica nas permissoes se o usuário tem permissao na url passada por parametro
-//         //         $this->geral_model->initDb("");
-//         //         $respUrl = $this->geral_model->retornaConteudo($url,"link","menu")->row();
-
-//         //         if(!$this->site->checkPermissao($this->session->userdata('user_id'),$respUrl->id)){
-//         //             $where .= ($where != '') ? " AND $campoAutor = " .$valCampoAutor : "WHERE $campoAutor = " .$valCampoAutor;
-//         //         }
-//         //     }
-//         // }
-//         // else{
-//             // $where .= ($where != '') ? " AND $campoAutor = " .$valCampoAutor : "WHERE $campoAutor = " .$valCampoAutor;
-//         // }
-
-//         $this->geral_model->initDb($db);
-
-//         $this->geral_model->retornaQuery("SET lc_time_names = 'pt_BR'");
 //         $respTotal = $this->geral_model->retornaQuery("SELECT * FROM $tabela $where");
 //         $resp = $this->geral_model->retornaQuery("SELECT * FROM $tabela $where $ordem LIMIT $start,$length");
 

@@ -91,62 +91,6 @@ app.directive('dtTable',function($http){
                 "pageLength": 100,
                 "dom": '<“H”lfrp>t<“F”ip>'
             });
-
-            /*
-            * Clique nas linhas
-            */
-
-            if(scope.customClick === undefined){
-                $('#dados tbody').on( 'click', 'tr td:not(:last-child)', function (e) {
-                	console.log($(e.currentTarget).hasClass("sorting_1"),$(e.target));
-                    if(!$(e.currentTarget).hasClass("sorting_1")){
-                        $('#dados tbody tr.selected').toggleClass('selected');
-                            $(this).parent().toggleClass('selected');
-                            var trAtual = $(this).parent();
-
-                            scope.idItemDt = $(e.currentTarget).parent().attr('id');
-
-                            scope.resetVar();
-                            scope.$apply();
-
-                            if($(e.currentTarget).parent().hasClass('selected')){
-                               var tabela = scope.tabelaView
-                               if(scope.tabelaViewJoins){
-                                  tabela = scope.tabelaViewJoins;
-                               }
-
-                               $http({
-                                   method : 'POST',
-                                   //url : 'admin/getItemTable',
-                                   url : "api/impressao/" + $(e.currentTarget).parent().attr('id') + "/id/" + tabela + "/" + scope.db + "/" + scope.pasta + "/" + scope.pagina + "/false",
-                                   data : $.param({ idItem: $(e.currentTarget).parent().attr('id'), tabela: scope.tabelaView, campo: "id", db : scope.db }),
-                                   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                               })
-                               .success(function(data) {
-                                    $("#cont-detalhes").addClass('show');
-                                    $("#cont-detalhes").removeClass('hidden');
-
-                                    $("#conteudo-dialog").html(data);
-
-                                   scope.dados.ferias = data;
-                                   scope.dadosInsert = data;
-                               });
-                            }
-                            else{
-                               scope.resetVar();
-                               scope.$apply();
-                            }
-                    }
-                } );
-            }
-            else{
-                console.log(scope.tdClick);
-                $('#dados tbody').on( 'click', scope.tdClick, scope.customClick);
-            }
-
-            if(scope.clickBotao !== undefined){
-                $("#dados tbody").on('click','tr td:last-child span',scope.clickBotao);
-            }
         }
     };
 });

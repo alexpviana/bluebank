@@ -14,7 +14,8 @@ module.exports = {
   		},
   		numero : {
   			type : "string",
-  			required : "true"
+  			required : "true",
+        unique : true
   		},
 
   		contas : {

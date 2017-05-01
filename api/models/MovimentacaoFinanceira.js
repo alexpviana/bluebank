@@ -18,18 +18,14 @@ module.exports = {
   		},
   		"tipo" : {
   			type : "string",
-  			enum: ['C', 'D'],
+  			enum: ['Depósito', 'Transferência'],
   			required : "true"
   		},
-
   		"conta_origem" : {
-  			collection : "contacorrente",
-  			unique : true,
-  			required : "true"
+  			model : "contacorrente"
   		},
   		"conta_destino" : {
-  			collection : "contacorrente",
-  			unique : true,
+  			model : "contacorrente",
   			required : "true"
   		}
   }

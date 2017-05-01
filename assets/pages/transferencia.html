@@ -11,38 +11,29 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<form class="form-horizontal">		        
-		        <div class="form-group">
-		            <label for="data-transferencia" class="col-sm-3 control-label">Data da Transferência</label>
-		            <div class="col-sm-2">
-		            	<div class="input-group">
-		            		<input type="text" class="form-control date-picker" id="data_transferencia" name="data_transferencia" ng-model="dados.data_transferencia" required="" date-picker data-campomodel="data_transferencia" data-enviaForm="true"/>	
-		            		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-		            	</div>		            	
-		            </div>
-		        </div>
-		        <div class="form-group">
+			<form id="form_envio" class="form-horizontal row-border" name="form_envio" ng-submit="((form_envio.$valid && enviaForm()) || (salvaForm && enviaForm()))" novalidate form-envio>
+		        <div class="form-group" ng-class="{'has-error': form_envio.agencia.$invalid && submitted }">
 		            <label for="agencia" class="col-sm-3 control-label">Agência</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="agencia" placeholder="Agência" type="text"></input>	
+		            	<input class="form-control" id="agencia" placeholder="Agência" type="text" required="" ng-model="dados.agencia"></input>	
 		            </div>
 		        </div>
-		        <div class="form-group">
+		        <div class="form-group" ng-class="{'has-error': form_envio.conta_corrente.$invalid && submitted }">
 		            <label for="conta-corrente"  class="col-sm-3 control-label">Conta Corrente</label>
 		            <div class="col-sm-3">
-		            	<input class="form-control" id="conta-corrente" placeholder="Conta Corrente" type="text"></input>
+		            	<input class="form-control" id="conta-corrente" placeholder="Conta Corrente" type="text" required="" ng-model="dados.conta_corrente"></input>
 	            	</div>
 		        </div>
-		        <div class="form-group">
+		        <div class="form-group" ng-class="{'has-error': form_envio.cpf.$invalid && submitted }">
 		            <label for="cpf" class="col-sm-3 control-label">CPF</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="cpf" type="text" ui-mask="999.999.999-99" ng-model="dados.cpf" ng-blur="checkCpf($event)"></input>
+		            	<input class="form-control" id="cpf" type="text" ui-mask="999.999.999-99" ng-model="dados.cpf" ng-blur="checkCpf($event)" required=""></input>
 		            </div>
 		        </div>
-		        <div class="form-group">
+		        <div class="form-group" ng-class="{'has-error': form_envio.valor.$invalid && submitted }">
 		            <label for="valor" class="col-sm-3 control-label">Valor</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="valor" placeholder="Valor" type="text" ng-model="dados.valor" mask-money></input>
+		            	<input class="form-control" id="valor" placeholder="Valor" type="text" ng-model="dados.valor" mask-money required=""></input>
 		            </div>
 		        </div>
 		        
