@@ -32,6 +32,7 @@ module.exports = {
         .populate("conta_origem")
         .populate("conta_destino")
         .populate("cliente_destino")
+        .populate("cliente_origem")
     	.sort("data_movimentacao ASC")
     	.exec(function(err,movs){
     		if(err){
@@ -46,7 +47,7 @@ module.exports = {
 
       			var origemTxtTransferencia = "";
 
-      			if(typeof objMov.cliente_origem != "undefined"){
+      			if(typeof objMov.cliente_origem != "undefined" && objMov.tipo == "Depósito"){
       				origemTxtTransferencia = "Depósito - " + objMov.cliente_origem.nome;
       			}
       			else{

@@ -65,6 +65,15 @@ module.exports.connections = {
     database: 'bluebank' //optional
   },
 
+  externalMongoDb: {
+    adapter: 'sails-mongo',
+    host: 'ds127801.mlab.com:27801/heroku_jk3x96bx',
+    port: 27801,
+    user: 'heroku_jk3x96bx', //optional
+    password: 'heroku_jk3x96bx', //optional
+    database: 'bluebank' //optional
+  },
+
   /***************************************************************************
   *                                                                          *
   * PostgreSQL is another officially supported relational database.          *
