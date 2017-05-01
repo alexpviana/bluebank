@@ -28,7 +28,7 @@ module.exports = {
 		// N Contas
 		contas : {
 			collection : "contacorrente",
-			via : "cliente"
+			via : 'cliente'
 		},
 
 		verifyPassword: function (password) {

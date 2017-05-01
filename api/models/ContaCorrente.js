@@ -13,9 +13,13 @@ module.exports = {
   			required : "true"
   		},
   		agencia : {
-  			model : "agencia",
-  			unique : true,
-  			required : "true"
+        model : "agencia",
+        unique : true,
+        required : "true"
+      },
+      cliente : {
+  			model : "cliente",
+  			unique : true
   		}
   	}
 };
