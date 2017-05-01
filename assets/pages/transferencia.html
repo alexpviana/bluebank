@@ -15,31 +15,31 @@
 		        <div class="form-group" ng-class="{'has-error': form_envio.agencia.$invalid && submitted }">
 		            <label for="agencia" class="col-sm-3 control-label">Agência</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="agencia" placeholder="Agência" type="text" required="" ng-model="dados.agencia"></input>	
+		            	<input class="form-control" id="agencia" name="agencia" placeholder="Agência" type="text" required="" ng-model="dados.agencia"></input>	
 		            </div>
 		        </div>
 		        <div class="form-group" ng-class="{'has-error': form_envio.conta_corrente.$invalid && submitted }">
 		            <label for="conta-corrente"  class="col-sm-3 control-label">Conta Corrente</label>
 		            <div class="col-sm-3">
-		            	<input class="form-control" id="conta-corrente" placeholder="Conta Corrente" type="text" required="" ng-model="dados.conta_corrente"></input>
+		            	<input class="form-control" id="conta-corrente" name="conta_corrente" placeholder="Conta Corrente" type="text" required="" ng-model="dados.conta_corrente"></input>
 	            	</div>
 		        </div>
 		        <div class="form-group" ng-class="{'has-error': form_envio.cpf.$invalid && submitted }">
 		            <label for="cpf" class="col-sm-3 control-label">CPF</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="cpf" type="text" ui-mask="999.999.999-99" ng-model="dados.cpf" ng-blur="checkCpf($event)" required=""></input>
+		            	<input class="form-control" id="cpf" name="cpf" type="text" ui-mask="999.999.999-99" ng-model="dados.cpf" ng-blur="checkCpf($event)" required=""></input>
 		            </div>
 		        </div>
 		        <div class="form-group" ng-class="{'has-error': form_envio.valor.$invalid && submitted }">
 		            <label for="valor" class="col-sm-3 control-label">Valor</label>
 		            <div class="col-sm-2">
-		            	<input class="form-control" id="valor" placeholder="Valor" type="text" ng-model="dados.valor" mask-money required=""></input>
+		            	<input class="form-control" id="valor" name="valor" placeholder="Valor" type="text" ng-model="dados.valor" mask-money required=""></input>
 		            </div>
 		        </div>
 		        
 		        <div class="form-group">
 		        	<div class="col-sm-offset-3 col-sm-9">
-		        		<button class="btn btn-default" type="submit">Transferir</button>		
+		        		<button class="btn btn-default" type="submit" ng-click="submitForm()">Transferir</button>		
 		        	</div>
 		        </div>
 		    </form>

@@ -25,9 +25,16 @@ module.exports = {
   			model : "contacorrente"
   		},
   		"conta_destino" : {
-  			model : "contacorrente",
-  			required : "true"
-  		}
+        model : "contacorrente",
+        required : "true"
+      },
+      "cliente_destino" : {
+        model : "cliente",
+        required : "true"
+      },
+      "cliente_origem" : {
+  			model : "cliente"
+  		},
   }
 };
 

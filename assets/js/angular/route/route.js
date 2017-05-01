@@ -45,6 +45,7 @@ app.run(function ($rootScope,$location,$state,$http) {
 
                     if(!logged){
                         event.preventDefault();
+                        $('.navbar-nav li').removeClass('active');
                         $state.go('login');
                     }
 
@@ -59,5 +60,7 @@ app.run(function ($rootScope,$location,$state,$http) {
         else{
             $('body').removeClass('loading');
         }
+
+        $rootScope.paginaAtual = $location.path();
     });
 });

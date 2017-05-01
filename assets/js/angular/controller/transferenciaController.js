@@ -21,6 +21,24 @@ app.controller("transferenciaController",['$scope','$location','$http','$parse',
     	console.log($scope.validaCPF($(ev.currentTarget).val()));
     };
 
+    /*
+     * Form - formEnvio Directive
+     */
+    $scope.hasTable     = false;
+    $scope.callSucesso  = true;
+    $scope.urlForm      = "movimentacaofinanceira/transferencia";
+
+    $scope.sucesso = function(resp){
+    	console.log(resp);
+
+        if(resp.data.status){
+            // carregando();
+            // $state.go('extrato');
+        }
+
+        alerta(resp.data.msg);
+    };
+
     // Validacao de CPF
     $scope.validaCPF = function(cpf){
     	console.log(cpf);

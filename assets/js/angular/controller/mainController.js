@@ -1,6 +1,6 @@
 app.controller("mainController",['$scope','$http','$location','$rootScope',function($scope,$http,$location,$rootScope){
     $scope.location    = $location;
-    $scope.paginaAtual = $location.path();
+    $rootScope.paginaAtual = $location.path();
 
     if($location.path() === ""){
         $location.path("/home");
@@ -14,8 +14,4 @@ app.controller("mainController",['$scope','$http','$location','$rootScope',funct
             $(".backstretch").remove();
         }
     });
-
-    // io.socket.on('connect', function(){
-    //     io.socket.get('/')
-    // });
 }]);

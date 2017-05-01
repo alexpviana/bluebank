@@ -22,8 +22,6 @@ module.exports = {
       			return res.negotiate(err);
       		}
 
-      		console.log("conta",data);
-
       		if(data){
       			Cliente.findOne({id : data.cliente}).exec(function(err,cliente){
 	      			if(cliente){
