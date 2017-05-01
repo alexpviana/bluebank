@@ -67,11 +67,11 @@ module.exports.connections = {
 
   externalMongoDb: {
     adapter: 'sails-mongo',
-    host: 'ds127801.mlab.com:27801/heroku_jk3x96bx',
-    port: 27801,
-    user: 'heroku_jk3x96bx', //optional
-    password: '0hVyspXnsfXU', //optional
-    database: 'bluebank' //optional
+    host: process.env.MONGOLAB_URI,
+    // port: 27801,
+    // user: 'heroku_jk3x96bx', //optional
+    // password: '0hVyspXnsfXU', //optional
+    // database: 'bluebank' //optional
   },
 
   /***************************************************************************
