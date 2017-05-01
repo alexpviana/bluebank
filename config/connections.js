@@ -70,7 +70,7 @@ module.exports.connections = {
     host: 'ds127801.mlab.com:27801/heroku_jk3x96bx',
     port: 27801,
     user: 'heroku_jk3x96bx', //optional
-    password: 'heroku_jk3x96bx', //optional
+    password: '0hVyspXnsfXU', //optional
     database: 'bluebank' //optional
   },
 
