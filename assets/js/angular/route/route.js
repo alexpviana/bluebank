@@ -28,22 +28,35 @@ app.config(function($stateProvider, $urlRouterProvider,$httpProvider,$locationPr
         });
 });
 
-app.run(function ($rootScope,$location,$state) {
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-        console.log("location",$location.path());
+app.run(function ($rootScope,$location,$state,$http) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {        
         var requireLogin = (toState.requireLogin !== undefined) ? toState.requireLogin : false;
         var logged = false;
 
+        $(".ui-view").hide();
+        $('body').addClass('loading');
+
         if(requireLogin){
-            // Check if user is logged in
-            //json funcao retorna se logado ou nao
-            if(!logged){
-                event.preventDefault();
-                $state.go('login');
-            }
+            // Verifica se usuário está logado
+            $http.get('cliente/logado').then(
+                function success(resp){
+                    logged = resp.data.logado;
+
+                    if(!logged){
+                        event.preventDefault();
+                        $state.go('login');
+                    }
+
+                    $(".ui-view").show();
+                    $('body').removeClass('loading');
+                },
+                function error(err){
+                    console.log(err);
+                }
+            );
         }
         else{
-
+            $('body').removeClass('loading');
         }
     });
 });

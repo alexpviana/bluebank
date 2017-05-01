@@ -1,4 +1,4 @@
-app.controller("loginController",['$scope','$location','$http','$parse',function($scope,$location,$http,$parse){
+app.controller("loginController",['$scope','$location','$http','$parse','$state',function($scope,$location,$http,$parse,$state){
 
     $scope.dados = {
     	"agencia" : "",
@@ -22,7 +22,14 @@ app.controller("loginController",['$scope','$location','$http','$parse',function
     $scope.urlForm      = "login/auth";
 
     $scope.sucesso = function(data){
-    	console.log(data);
+        console.log("data",data.status);
+        
+        if(data.status){
+            $state.go('extrato');
+        }
+        else{
+            alerta("Houve um erro, verifique as informações e tente novamente");
+        }
     };
 
 }]);

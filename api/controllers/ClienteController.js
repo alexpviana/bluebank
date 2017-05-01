@@ -7,15 +7,13 @@
 
 module.exports = {
 	logado : function(req,res){
-		passport.authenticate('bearer',{ session : false }), 
-			function(req,res){
-			console.log("bearer",req);
-			};
-		
-		// var user = req.user;
-		// return res.view('cliente',{
-		// 	dados : user
-		// });
+		return res.json({logado : req.session.authenticated});
+	},
+
+	logout : function(req,res){
+		req.session.authenticated = null;
+		return res.redirect('/#!/home');
 	}
+
 };
 

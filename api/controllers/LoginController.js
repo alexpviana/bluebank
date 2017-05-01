@@ -13,17 +13,33 @@ module.exports = {
 		bcrypt.hash(req.param('senha'), 10, function (err, hash) {
 	      	senhaHash = hash;
 
-	      	// Agencia.find({
-	      	// 	"numero" : "405789-5"
-	      	// }).populate('contacorrente', { ''})
+	      	ContaCorrente.find({
+	      		"numero" : req.param('conta_corrente')
+	      	})
+	      	.populate('agencia',{
+	      		where : {
+	      			numero : req.param('agencia')
+	      		}
+	      	})
+	      	.populate('cliente',{
+	      		where : {
+	      			password : senhaHash
+	      		}
+	      	})
+	      	.exec(function(err,data){
+	      		console.log(data,data.length);
+	      		if(err){
+	      			return res.serverError(err);
+	      		}
 
-	      	// Cliente.find({
-	      	// 	"agencia" : {
-	      			
-	      	// 	}
-	      	// }).exec(function(err,data){
-	      	// 	console.log(err,data);
-	      	// });
+	      		if(data.length >= 1){ // Consulta válida
+	      			req.session.authenticated = true;
+	      			return res.json({ status : true, resp : "ok" });
+	      		}
+	      		else{
+	      			return res.json({ status : false, resp : "erro" });	
+	      		}
+	      	});
 
 	      	console.log(req.allParams(),senhaHash);
 	    });
