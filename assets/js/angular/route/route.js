@@ -35,6 +35,7 @@ app.run(function ($rootScope,$location,$state,$http) {
 
         $(".ui-view").hide();
         $('body').addClass('loading');
+        fechaCarregando();
 
         if(requireLogin){
             // Verifica se usuário está logado

@@ -19,7 +19,8 @@ module.exports = {
       },
       cliente : {
   			model : "cliente",
-  			unique : true
+  			unique : true,
+        required : "true"
   		}
   	}
 };

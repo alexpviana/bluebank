@@ -13,7 +13,6 @@ module.exports = {
 	logout : function(req,res){
 		req.session.authenticated = null;
 		return res.redirect('/#!/home');
-	}
-
+	},
 };
 

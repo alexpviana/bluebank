@@ -20,9 +20,7 @@ module.exports = {
 		},
 		password : {
 			type : 'string',
-			required : "true",
-			minLength: 6,
-			maxLength: 50
+			required : "true"
 		},
 
 		// N Contas

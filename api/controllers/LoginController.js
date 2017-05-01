@@ -8,42 +8,44 @@
 module.exports = {
 	auth : function(req,res){
 		var bcrypt = require('bcryptjs');
-		var senhaHash = "";
 
-		bcrypt.hash(req.param('senha'), 10, function (err, hash) {
-	      	senhaHash = hash;
+      	ContaCorrente.findOne({
+      		"numero" : req.param('conta_corrente')
+      	})
+      	.populate('agencia',{
+      		where : {
+      			numero : req.param('agencia')
+      		}
+      	})
+      	.exec(function(err,data){
+      		if(err){
+      			return res.serverError(err);
+      		}
 
-	      	ContaCorrente.find({
-	      		"numero" : req.param('conta_corrente')
-	      	})
-	      	.populate('agencia',{
-	      		where : {
-	      			numero : req.param('agencia')
-	      		}
-	      	})
-	      	.populate('cliente',{
-	      		where : {
-	      			password : senhaHash
-	      		}
-	      	})
-	      	.exec(function(err,data){
-	      		console.log(data,data.length);
-	      		if(err){
-	      			return res.serverError(err);
-	      		}
+      		if(data){
+      			Cliente.findOne({id : data.cliente}).exec(function(err,cliente){
+	      			if(cliente){
+	      				if(bcrypt.compareSync(req.param('senha'), cliente.password)){
+	      					req.session.authenticated = true;
+	      					req.session.userId = cliente.id;
+	      					req.session.ccId = data.id;
+	      					req.session.agenciaId = data.agencia.id;
 
-	      		if(data.length >= 1){ // Consulta válida
-	      			req.session.authenticated = true;
-	      			return res.json({ status : true, resp : "ok" });
-	      		}
-	      		else{
-	      			return res.json({ status : false, resp : "erro" });	
-	      		}
-	      	});
-
-	      	console.log(req.allParams(),senhaHash);
-	    });
-		
+	      					return res.json({ status : true, msg : "Aguarde, você está sendo redirecionado." });	
+	      				}
+	      				else{
+	      					return res.json({ status : false, msg : "Atenção! Senha inválida." });		
+	      				}
+	      			}
+	      			else{
+	      				return res.json({ status : false, msg : "Cliente não encontrado" });
+	      			}
+	      		});
+      		}
+      		else{
+      			return res.json({ status : false, msg : "Conta Corrente e Agência não encontradas" });	
+      		}
+      	});
 	}
 };
 

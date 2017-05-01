@@ -21,14 +21,15 @@ app.controller("loginController",['$scope','$location','$http','$parse','$state'
     $scope.callSucesso  = true;
     $scope.urlForm      = "login/auth";
 
-    $scope.sucesso = function(data){
-        console.log("data",data.status);
-        
-        if(data.status){
+    $scope.sucesso = function(resp){
+        console.log("data",resp.data.status);
+
+        if(resp.data.status){
+            carregando();
             $state.go('extrato');
         }
         else{
-            alerta("Houve um erro, verifique as informações e tente novamente");
+            alerta(resp.data.msg);
         }
     };
 
