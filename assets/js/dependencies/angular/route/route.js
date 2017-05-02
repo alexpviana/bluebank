@@ -47,6 +47,9 @@ app.run(function ($rootScope,$location,$state,$http) {
                         event.preventDefault();
                         $('.navbar-nav li').removeClass('active');
                         $state.go('login');
+                        $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="/#!/login">Acesse sua conta</a>');
+                    }else{
+                        $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="cliente/logout">Sair</a>');
                     }
 
                     $(".ui-view").show();

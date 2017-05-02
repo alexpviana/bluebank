@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">                    
         <div class="navbar-header">
             <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
@@ -39,11 +39,13 @@
                 </ul>    
             </div>
             
-            <form class="navbar-form navbar-right form-login">                
-                <button class="btn btn-default btn-entrar" type="button" ng-click="entraPagina('login')">
-                    Acesse sua conta
-                </button>
-            </form>
+            <div class="navbar-right">
+                <% if (typeof req.session.authenticated == 'undefined') { %>
+                    <a class="btn btn-default btn-entrar" href="/#!/login">Acesse sua conta</a>
+                <% } else { %>
+                    <a class="btn btn-default btn-entrar" href="cliente/logout">Sair</a>
+                <% } %>
+            </div>
         </div>
         <!-- /.navbar-collapse -->
     </div>

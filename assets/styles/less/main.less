@@ -13,6 +13,10 @@
 	float: none;
 }
 
+nav{
+	position: relative;
+	z-index: 1000;	
+}
 .navbar{
 	background: @baseBlue;
 	border: 0 none;
@@ -49,6 +53,7 @@
 			a {
 				color: white;
 				padding: 5px 10px;
+				display: inline-block;
 
 				&:hover,&:focus{
 					text-decoration: none;
@@ -59,8 +64,12 @@
 		}
 	}
 
-	.form-login{
-		margin-top: 0;
+	.navbar-toggle{
+		background: white;
+
+		.icon-bar{
+			background: @baseBlue;
+		}
 	}
 }
 
@@ -78,6 +87,7 @@
 
 .btn-entrar{
 	margin-top: 3px;
+	margin-right: 15px;
 }
 
 .breadcrumb{
@@ -108,6 +118,7 @@
 	position: fixed;
 	bottom: 0;
 	border-top: 3px solid @baseBlue;
+	z-index: 100;
 
 	p{
 		margin-bottom: 0;
@@ -117,6 +128,7 @@
 
 
 .ui-view{
+	padding-top: 60px;
 	padding-bottom: 90px;
 }
 

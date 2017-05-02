@@ -1,0 +1,114 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-width : 320px)
+and (max-width : 480px) {
+	
+
+}
+
+
+@media only screen
+and (min-width : 480px)
+and (max-width : 768px) {
+
+}
+ 
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+/* Styles */
+}
+ 
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+/* Styles */
+}
+ 
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+	
+}
+ 
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px)
+and (orientation : landscape) {
+	
+}
+ 
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px)
+and (orientation : portrait) {
+	
+}
+ 
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+/* Styles */
+}
+ 
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+/* Styles */
+}
+ 
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+@media only screen
+and (min-width: 200px) and (max-width: 992px){
+}
+
+@media (max-width: 768px){
+	.navbar{
+		height: 60px;
+		line-height: 60px;
+	}
+
+	.navbar-header{
+		height: 60px;
+	}
+
+	.navbar-collapse{
+		background: white;
+	}
+
+	.navbar .navbar-nav li a{
+		color: #19ADE4;
+	}
+
+
+
+	.navbar-brand {
+		margin-top: 15px;
+	}
+
+	.navbar-brand img{
+		height: 30px;
+	}
+
+	.rodape img{
+		height: 15px;
+	}
+
+	.rodape p{
+		font-size: 10px;
+	}
+
+	.rodape{
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+}
