@@ -21,6 +21,8 @@ module.exports = {
      connection: 'externalMongoDb'
   },
 
+  hookTimeout: 1030000,
+
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
