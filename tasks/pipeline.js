@@ -29,14 +29,24 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
   'js/dependencies/jquery/jquery.min.js',
   'js/dependencies/angular/angular.min.js',
+  'js/dependencies/angular/angular-locale_pt-br.js',
+  'js/dependencies/jquery.maskMoney.js',
+  'js/dependencies/moment.min.js',
+  'js/dependencies/app.js',
 
-  // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  'js/dependencies/angular/directive/*.js',
+  'js/dependencies/angular/filter/*.js',
+  'js/dependencies/angular/route/*.js',
+  'js/dependencies/angular/service/*.js',
+
+  'js/angular/controller/*.js',
+
+  // Dependencies like jQuery, or Angular are brought in here  
   'js/vendor/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  'js/funcoes.js'
 ];
 
 
