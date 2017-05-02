@@ -56,22 +56,23 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  localMongoDb: {
-    adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    user: 'bluebank', //optional
-    password: 'pwdbluebank', //optional
-    database: 'bluebank' //optional
-  },
+  // localMongoDb: {
+  //   adapter: 'sails-mongo',
+  //   host: 'localhost',
+  //   port: 27017,
+  //   user: 'bluebank', //optional
+  //   password: 'pwdbluebank', //optional
+  //   database: 'bluebank' //optional
+  // },
 
+  //mongodb://heroku_jk3x96bx:9c54miloegjjd0pd6uur9jk1rj@ds127801.mlab.com:27801/heroku_jk3x96bx
   externalMongoDb: {
     adapter: 'sails-mongo',
-    host: process.env.MONGODB_URI,
-    // port: 27801,
-    // user: 'heroku_jk3x96bx', //optional
-    // password: '0hVyspXnsfXU', //optional
-    // database: 'bluebank' //optional
+    host: "ds127801.mlab.com",
+    port: 27801,
+    user: 'heroku_jk3x96bx', //optional
+    password: '9c54miloegjjd0pd6uur9jk1rj', //optional
+    database: 'heroku_jk3x96bx' //optional
   },
 
   /***************************************************************************
