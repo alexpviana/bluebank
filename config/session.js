@@ -44,7 +44,7 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'redis',
+  // adapter: 'socket.io-redis',
 
   /***************************************************************************
   *                                                                          *
@@ -54,13 +54,15 @@ module.exports.session = {
   * https://github.com/visionmedia/connect-redis                             *
   *                                                                          *
   ***************************************************************************/
-
-  // host: 'localhost',
-  // port: 6379,
+//redis://redistogo:115dd628a9b534e1c56675527602081d@barreleye.redistogo.com:11968/
+  // host: 'barreleye.redistogo.com',
+  // port: 11968,
+  // user: 'redistogo',
+  // pass: "115dd628a9b534e1c56675527602081d",
+  // prefix: 'sess:',
   // ttl: <redis session TTL in seconds>,
   // db: 0,
-  // pass: <redis auth password>,
-  // prefix: 'sess:',
+  
 
 
   /***************************************************************************
@@ -74,8 +76,13 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
+  adapter: 'mongo',
+
   // url: 'mongodb://user:password@localhost:27017/dbname', // user, password and port optional
+  url: 'mongodb://heroku_jk3x96bx:9c54miloegjjd0pd6uur9jk1rj@ds127801.mlab.com:27801/heroku_jk3x96bx',
+
+
+  
 
   /***************************************************************************
   *                                                                          *

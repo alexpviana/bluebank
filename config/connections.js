@@ -67,7 +67,7 @@ module.exports.connections = {
 
   externalMongoDb: {
     adapter: 'sails-mongo',
-    host: process.env.MONGOLAB_URI,
+    host: process.env.MONGODB_URI,
     // port: 27801,
     // user: 'heroku_jk3x96bx', //optional
     // password: '0hVyspXnsfXU', //optional
