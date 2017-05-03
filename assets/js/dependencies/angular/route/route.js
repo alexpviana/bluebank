@@ -37,32 +37,32 @@ app.run(function ($rootScope,$location,$state,$http) {
         $('body').addClass('loading');
         fechaCarregando();
 
-        if(requireLogin){
-            // Verifica se usuário está logado
-            $http.get('cliente/logado').then(
-                function success(resp){
-                    logged = resp.data.logado;
+        // Verifica se usuário está logado
+        $http.get('cliente/logado').then(
+            function success(resp){
+                $('body').removeClass('loading');
 
-                    if(!logged){
+                logged = resp.data.logado;
+
+                if(!logged){
+                    if(requireLogin){
                         event.preventDefault();
                         $('.navbar-nav li').removeClass('active');
                         $state.go('login');
-                        $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="/#!/login">Acesse sua conta</a>');
-                    }else{
-                        $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="cliente/logout">Sair</a>');
                     }
-
-                    $(".ui-view").show();
-                    $('body').removeClass('loading');
-                },
-                function error(err){
-                    console.log(err);
+                    
+                    $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="/#!/login">Acesse sua conta</a>');
+                }else{
+                    $(".navbar-right").html('<a class="btn btn-default btn-entrar" href="cliente/logout">Sair</a>');
                 }
-            );
-        }
-        else{
-            $('body').removeClass('loading');
-        }
+
+                $(".ui-view").show();
+                $('body').removeClass('loading');
+            },
+            function error(err){
+                console.log(err);
+            }
+        );
 
         $rootScope.paginaAtual = $location.path();
     });

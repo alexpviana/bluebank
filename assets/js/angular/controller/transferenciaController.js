@@ -1,4 +1,4 @@
-app.controller("transferenciaController",['$scope','$location','$http','$parse',function($scope,$location,$http,$parse){
+app.controller("transferenciaController",['$scope','$location','$http','$parse','$state',function($scope,$location,$http,$parse,$state){
 
     $scope.dados = {
     	"data_transferencia" : "",
@@ -32,8 +32,8 @@ app.controller("transferenciaController",['$scope','$location','$http','$parse',
     	console.log(resp);
 
         if(resp.data.status){
-            // carregando();
-            // $state.go('extrato');
+            carregando();
+            $state.go('extrato');
         }
 
         alerta(resp.data.msg);

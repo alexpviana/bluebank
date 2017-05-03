@@ -43,12 +43,13 @@ module.exports = {
 
       		for(var i=0; i<movs.length; i++){
       			var objMov = movs[i];
+
       			saldo += objMov.valor;
 
       			var origemTxtTransferencia = "";
 
       			if(typeof objMov.cliente_origem != "undefined" && objMov.tipo == "Depósito"){
-      				origemTxtTransferencia = "Depósito - " + objMov.cliente_origem.nome;
+      				origemTxtTransferencia = " - " + objMov.cliente_origem.nome;
       			}
       			else{
       				origemTxtTransferencia = "";	
@@ -57,7 +58,7 @@ module.exports = {
       			vetData.push({
       				"id" : objMov.id,
       				"data_movimentacao" : sails.moment(objMov.createdAt).format("DD/MM/YYYY"),
-      				"origem" : (objMov.tipo == "Depósito") ? "Depósito em Conta" : origemTxtTransferencia,
+      				"origem" : (objMov.tipo == "Depósito") ? "Depósito em Conta" + origemTxtTransferencia : origemTxtTransferencia,
       				"historico" : (objMov.tipo == "Depósito") ? "Depósio em Conta" : "Transferência - " + objMov.cliente_destino.nome,
       				"documento" : objMov.id,
       				"valor" : "$ " + objMov.valor.toFixed(2).replace(/\./g,","),
@@ -93,10 +94,7 @@ module.exports = {
 		.exec(function(err,conta){
 			if(err){
 				return res.serverError(err);
-			}
-
-			console.log("contaaaa",conta);
-			console.log("types",typeof conta.cliente,typeof conta.agencia);
+			}			
 
 			var checkAgencia = false;
 			var checkCliente = false;
@@ -154,7 +152,7 @@ module.exports = {
 										"valor"            : valor,
 										"tipo"             : "Depósito",
 										"conta_origem"     : req.session.ccId,
-										"conta_destino"    : contaCorrente,
+										"conta_destino"    : conta.id,
 										"cliente_destino"  : conta.cliente.id,
 										"cliente_origem"   : req.session.userId,
 									})
