@@ -80,11 +80,11 @@ and (min-width: 200px) and (max-width: 992px){
 		height: 60px;
 	}
 
-	.navbar-collapse{
+	.navbar-collapse.in,.navbar-collapse.collapsing{
 		background: white;
 	}
 
-	.navbar .navbar-nav li a{
+	.navbar .navbar-collapse.in li a{
 		color: #19ADE4;
 	}
 
